@@ -31,7 +31,7 @@ export default function SubMainSection(props) {
   }, [isInView]);
 
   return (
-    <section className="bg-[#616161] text-white relative h-full w-full">
+    <section className="bg-[#616161] text-white relative h-full min-h-96 w-full">
       <BgVector></BgVector>
       <div
         ref={ref}
