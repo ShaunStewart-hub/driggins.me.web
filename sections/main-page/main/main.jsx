@@ -5,6 +5,7 @@ import { PollQuestionText_1 } from "@/content/polls/pollQuestion";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Votes from "@/components/votes";
 
 export default function MainSection(props) {
   const PollQuestion = PollQuestionText_1();
@@ -30,8 +31,9 @@ export default function MainSection(props) {
             transition={{ repeat: Infinity, repeatDelay: 15, duration: 0.5 }}
             className="grid grid-cols-4 pt-12 pl-4 pr-4"
           >
-            {PollQuestion.choices.map((choice, x = -1) => (
+            {PollQuestion.choices.map((choice, x = -1, y = 0) => (
               <HouseOfImages
+                votes={<Votes house={x} vote></Votes>}
                 key={choice}
                 imgTag={
                   <Tilt
@@ -40,6 +42,7 @@ export default function MainSection(props) {
                     scale={1.1}
                     className="h-full w-full"
                   >
+                    {/* {y++} */}
                     <Image
                       src={PollQuestion.images[x++]}
                       width={150}
