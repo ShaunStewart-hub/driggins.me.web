@@ -3,6 +3,7 @@
 // Import the MongoClient from the mongodb package
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 // Define your MongoDB URI
 const MONGO_URI = process.env.DATABASE;
 // if (!MONGO_URI) {
@@ -13,7 +14,7 @@ try {
 // Create a MongoDB client instance
 
 // Define a function to connect to MongoDB, fetch data, and log it
-export async function GET(req, res) {
+export async function POST(req, res) {
   try {
     // Connect to MongoDB
     const client = new MongoClient(MONGO_URI);
@@ -29,6 +30,8 @@ export async function GET(req, res) {
     const documents = await collection.find({}).toArray();
     // await console.log(documents);
     await client.close();
+    console.log("///////////////////");
+    console.log(req.body);
     return NextResponse.json(documents, { status: 200 });
 
     // Disconnect from MongoDB

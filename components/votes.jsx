@@ -33,7 +33,7 @@ export default function Votes(props) {
 
     return () => clearInterval(timer); // Cleanup on component unmount
   }, []);
-  console.log(showLoadingAnimation);
+
   return (
     <div className="  m-auto w-full h-full justify-center flex">
       {(isLoading || !showLoadingAnimation) && (
@@ -145,7 +145,7 @@ export default function Votes(props) {
         </div>
       )}
       {data && !error && showLoadingAnimation && (
-        <pre className="votes pt-12">{formattedData.replace(/"/g, "")}</pre>
+        <pre className="votes pt-3">{formattedData.replace(/"/g, "")}</pre>
       )}
     </div>
   );

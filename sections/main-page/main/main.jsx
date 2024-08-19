@@ -21,9 +21,8 @@ export default function MainSection(props) {
       <div className="h-full w-full text-white grid grid-rows-[auto, auto] top-0 z-10 relative">
         <div className=" h-full w-full text-center  text-3xl font-griffy paddingResponsive-0 fontResponsive-0 ">
           <h3 className="mb-[2.7vw]">{PollQuestion.Question}</h3>
-          <h2 className="fontResponsive_0">
-            Contact the number: Will be available soon
-          </h2>
+          <h2 className="fontResponsive_0">Contact the number: *** *** ****</h2>
+          {/* (361) 844-0698 */}
         </div>
         <div className="h-full w-full relative z-20 self-center">
           <motion.div
