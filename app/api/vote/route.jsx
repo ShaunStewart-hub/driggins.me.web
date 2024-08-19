@@ -11,14 +11,13 @@ const MONGO_URI = process.env.DATABASE;
 //   throw new Error("MONGO_URI is not defined");
 // }
 // Create a MongoDB client instance
-
+if (!MONGO_URI) {
+  throw new Error("MONGO_URI is not defined");
+}
+// Connect to MongoDB
+const client = new MongoClient(MONGO_URI);
 // Define a function to connect to MongoDB, fetch data, and log it
 export async function GET() {
-  if (!MONGO_URI) {
-    throw new Error("MONGO_URI is not defined");
-  }
-  // Connect to MongoDB
-  const client = new MongoClient(MONGO_URI);
   try {
     await client.connect();
 
