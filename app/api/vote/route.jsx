@@ -30,7 +30,6 @@ export async function GET(req, res) {
     const documents = await collection.find({}).toArray();
     // await console.log(documents);
     await client.close();
-    console.log(req.body);
     return NextResponse.json(documents, { status: 200 });
 
     // Disconnect from MongoDB

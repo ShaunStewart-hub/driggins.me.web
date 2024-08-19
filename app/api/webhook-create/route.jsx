@@ -30,9 +30,15 @@ export async function POST(req, res) {
     const documents = await collection.find({}).toArray();
     // await console.log(documents);
     await client.close();
-    console.log("///////////////////");
-    console.log(req.body);
-    return NextResponse.json(documents, { status: 200 });
+    return NextResponse.json(
+      {
+        documents,
+        requestBody,
+      },
+      { status: 200 }
+    );
+
+    // return NextResponse.json(documents, { status: 200 });
 
     // Disconnect from MongoDB
   } catch (error) {
