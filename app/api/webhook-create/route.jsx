@@ -9,9 +9,7 @@ const MONGO_URI = process.env.DATABASE;
 // if (!MONGO_URI) {
 //   throw new Error("MONGO_URI is not defined");
 // }
-if (!MONGO_URI) {
-  throw new Error("MONGO_URI is not defined");
-}
+
 const client = new MongoClient(MONGO_URI);
 // Create a MongoDB client instance
 
