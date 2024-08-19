@@ -37,6 +37,10 @@ export async function POST(req, res) {
     // Disconnect from MongoDB
   } catch (error) {
     // console.error("Failed to fetch data:", error);
-    return handleError(500, "Internal Server Error");
+
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
