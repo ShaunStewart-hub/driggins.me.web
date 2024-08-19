@@ -30,10 +30,23 @@ export async function POST(req, res) {
     const documents = await collection.find({}).toArray();
     // await console.log(documents);
     await client.close();
+
     return NextResponse.json(
       {
-        documents,
-        requestBody,
+        fulfillmentResponse: {
+          messages: [
+            {
+              text: {
+                text: [`Here are the documents: ${JSON.stringify(documents)}`],
+              },
+            },
+          ],
+        },
+        sessionInfo: {
+          parameters: {
+            documents: JSON.stringify(documents),
+          },
+        },
       },
       { status: 200 }
     );
