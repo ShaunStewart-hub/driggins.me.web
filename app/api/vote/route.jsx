@@ -17,7 +17,7 @@ const MONGO_URI = process.env.DATABASE;
 export async function GET(req, res) {
   try {
     // Connect to MongoDB
-    const client = new MongoClient(MONGO_URI);
+    const client = MongoClient(MONGO_URI);
     await client.connect();
 
     // Access the database
@@ -30,6 +30,7 @@ export async function GET(req, res) {
     const documents = await collection.find({}).toArray();
     // await console.log(documents);
     await client.close();
+    console.log(req.body);
     return NextResponse.json(documents, { status: 200 });
 
     // Disconnect from MongoDB
