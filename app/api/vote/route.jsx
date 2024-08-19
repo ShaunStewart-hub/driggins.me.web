@@ -14,7 +14,7 @@ const MONGO_URI = process.env.DATABASE;
 // Connect to MongoDB
 let client = new MongoClient(MONGO_URI);
 // Define a function to connect to MongoDB, fetch data, and log it
-export async function GET() {
+async function GET() {
   try {
     await client.connect();
 
@@ -36,3 +36,6 @@ export async function GET() {
     return NextResponse({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+export const config = {
+  type: "experimental-background",
+};
