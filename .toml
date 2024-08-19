@@ -1,6 +1,6 @@
 [build]
   # The command to build your Next.js application
   command = "npm install --force && npm audit fix --force && npm run build"
-
+  publish = "build"  # or "build", depending on your Next.js output directory
   # The directory where the build output will be located
   publish = ".next"
