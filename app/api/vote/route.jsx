@@ -10,14 +10,15 @@ const MONGO_URI = process.env.DATABASE;
 // if (!MONGO_URI) {
 //   throw new Error("MONGO_URI is not defined");
 // }
-
+try {
+} catch (error) {}
 // Create a MongoDB client instance
 
 // Define a function to connect to MongoDB, fetch data, and log it
 export async function GET(req, res) {
   try {
     // Connect to MongoDB
-    const client = MongoClient(MONGO_URI);
+    const client = new MongoClient(MONGO_URI);
     await client.connect();
 
     // Access the database
@@ -35,9 +36,6 @@ export async function GET(req, res) {
     // Disconnect from MongoDB
   } catch (error) {
     // console.error("Failed to fetch data:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
+    return NextResponse({ error: "Internal Server Error" }, { status: 500 });
   }
 }

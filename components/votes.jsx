@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Votes(props) {
   // //////////////////////////////////
-  const { data, error } = useSWR("/", fetcher, {
+  const { data, error } = useSWR("/api/vote", fetcher, {
     refreshInterval: 5000, // Fetch new data every 2 seconds
   });
 
@@ -145,7 +145,9 @@ export default function Votes(props) {
         </div>
       )}
       {data && !error && showLoadingAnimation && (
-        <pre className="votes pt-3">{formattedData.replace(/"/g, "")}</pre>
+        <pre className="votes pt-3">
+          {String(formattedData).replace(/"/g, "")}
+        </pre>
       )}
     </div>
   );
