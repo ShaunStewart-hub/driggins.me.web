@@ -12,7 +12,7 @@ const MONGO_URI = process.env.DATABASE;
 // }
 // Create a MongoDB client instance
 // Connect to MongoDB
-const client = new MongoClient(MONGO_URI);
+let client = new MongoClient(MONGO_URI);
 // Define a function to connect to MongoDB, fetch data, and log it
 export async function GET() {
   try {
