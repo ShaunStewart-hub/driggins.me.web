@@ -14,7 +14,7 @@ export default function Header() {
               height={200}
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
-              Da&apos;shaun Riggins
+              Shaun Stewart
             </span>
           </a>
           <div className="flex md:order-2">
