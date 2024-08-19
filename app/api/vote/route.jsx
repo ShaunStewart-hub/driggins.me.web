@@ -4,7 +4,9 @@
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 // Define your MongoDB URI
+
 const MONGO_URI = process.env.DATABASE;
+
 // if (!MONGO_URI) {
 //   throw new Error("MONGO_URI is not defined");
 // }
@@ -34,6 +36,6 @@ export async function GET(req, res) {
     // Disconnect from MongoDB
   } catch (error) {
     // console.error("Failed to fetch data:", error);
-    return handleError(500, "Internal Server Error");
+    return NextResponse({ error: "Internal Server Error" }, { status: 500 });
   }
 }
