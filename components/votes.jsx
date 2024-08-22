@@ -8,9 +8,13 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Votes(props) {
   // //////////////////////////////////
-  const { data, error } = useSWR("/api/vote", fetcher, {
-    refreshInterval: 5000, // Fetch new data every 2 seconds
-  });
+  const { data, error } = useSWR(
+    "https://us-central1-calm-producer-432721-n3.cloudfunctions.net/function-1",
+    fetcher,
+    {
+      refreshInterval: 5000, // Fetch new data every 2 seconds
+    }
+  );
 
   // Use SWR's built-in loading state instead of manual state
   const isLoading = !data && !error;
@@ -146,7 +150,8 @@ export default function Votes(props) {
       )}
       {data && !error && showLoadingAnimation && (
         <pre className="votes pt-3">
-          {String(formattedData).replace(/"/g, "")}
+          {/* {String(formattedData).replace(/"/g, "")} */}
+          {formattedData}
         </pre>
       )}
     </div>
