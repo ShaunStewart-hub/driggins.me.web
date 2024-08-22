@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Votes(props) {
   // //////////////////////////////////
-  const { data, error } = useSWR(
+  const { data, error, isLoading } = useSWR(
     "https://us-central1-calm-producer-432721-n3.cloudfunctions.net/function-1",
     fetcher,
     {
@@ -17,7 +17,7 @@ export default function Votes(props) {
   );
 
   // Use SWR's built-in loading state instead of manual state
-  const isLoading = !data && !error;
+  // const isLoading = !data && !error;
 
   // Check if the props are available and valid
   // const isValidData = data && props.house && props.vote;
@@ -148,7 +148,7 @@ export default function Votes(props) {
           </svg>
         </div>
       )}
-      {data && !error && showLoadingAnimation && (
+      {data && !error && showLoadingAnimation && !isLoading && (
         <pre className="votes pt-3">
           {/* {String(formattedData).replace(/"/g, "")} */}
           {formattedData}
